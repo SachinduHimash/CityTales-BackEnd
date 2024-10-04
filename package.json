@@ -1,0 +1,18 @@
+{
+  "name": "citytales-backend",
+  "version": "1.0.0",
+  "description": "CityTales is a React-based web app where citizens can upload geotagged stories, photos, and videos to create a crowdsourced archive of urban memories. Explore interactive maps, AR views, and historical timelines, bringing the city’s past to life through personal contributions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.11.1"
+  }
+}
