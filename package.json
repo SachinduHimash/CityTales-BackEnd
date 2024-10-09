@@ -12,7 +12,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.0",
-    "firebase": "^8.6.8"
+    "firebase": "^8.6.8",
+    "firebase-admin": "^12.6.0",
+    "formidable": "^3.5.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "eslint": "^9.11.1"
