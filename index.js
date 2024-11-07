@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const port = process.env.PORT;
+// const port = process.env.PORT;
+const port = 4000;
 
 const formidable = require('formidable');
 
@@ -24,7 +25,7 @@ admin.initializeApp({
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
-    databaseURL: process.env.DATABASE_URL,
+    databaseURL: "https://citytales-5568e-default-rtdb.firebaseio.com",
     projectId: process.env.PROJECT_ID,
     storageBucket: process.env.STORAGE_BUCKET,
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
@@ -105,6 +106,8 @@ app.post('/upload', async(req, res) => {
 
 app.listen(port, () => {
 
-  console.log(`Example app listening at http://localhost:${port}`);
+  // console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:4000`);
+
 
 });
