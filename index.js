@@ -46,20 +46,45 @@ app.get('/', (req, res) => {
 
 });
 
-app.post('/upload', async(req, res) => {
+app.get('/stories', async(req, res) => {
 
-  //initialise formidable
+  stories =[];
+
+  database.ref(`stories`).once('value')
+  .then(function(snapshot) {
+      let i = 0;
+      while(snapshot.val()[Object.keys(snapshot.val())[i]] != null){
+        stories.push(snapshot.val()[Object.keys(snapshot.val())[i]]);
+        i++;
+      }
+      console.log(stories)
+      
+      res.send(stories);
+  })
+
+
+  
+
+});
+
+app.post('/stories', async(req, res) => {
+
+    //initialise formidable
   const form = formidable.formidable({multiple: true})
 
+
+  
   form.parse(req, async (err, fields, files) => {
      if(err) {
         res.status(500).json({success: false, error: err})
      } else {
 
         let image_url; //to save the download url
+
+        console.log(fields)
         
         // path to image 
-        const filePath = files['photo'][0].filepath;
+        const filePath = fields['photo'][0];
         const story = fields['story'][0];
 
         if (filePath){
@@ -87,7 +112,7 @@ app.post('/upload', async(req, res) => {
     
         }
         let id = uuidv4().toString();
-        let data = {story,image_url,id}
+        let data = {story,image_url,id,lat:fields['lat'][0],lng:fields['lng'][0]}
         database.ref(`stories/${id}`).set(data, function(error) {
           if (error) {
           // The write failed...
